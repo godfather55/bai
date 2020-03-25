@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping List</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1>Shopping List</h1>
+  <p>
+      New item: <input type="text" name="item">
+      <button id="addButton" type="button">Add</button>
+  </p>
+  
+  <h3>List of items</h3>
+  <ol>
+      <li>cooking oil</li>
+      <li>breakfast cereal</li>
+      <li>bread</li>
+  </ol>
+  
+  <script>
+    // Dodanie elementu
+    $("#addButton").click(function (){
+          var newItem = $("input:text").val();
+          $("ol").append("<li>"+ newItem +"</li>");
+          $("input:text").val("");
+        });
+    // Usunięcie elementu
+    $("ol").on("dblclick", "li", function() {
+      var $deleteItem = $(this);               
+      $deleteItem.remove();                                              
+    }); 
+  </script>
+</body>
+
+</html>
