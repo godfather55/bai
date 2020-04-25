@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Elective Courses</h1>
+  <div id="app">
+    <input type="checkbox" id="przedmiot1" value="przedmiot1" v-model="przedmiot">
+    <label for="przedmiot1">Bogate aplikacje internetowe</label></br>
+
+    <input type="checkbox" id="przedmiot2" value="przedmiot2" v-model="przedmiot">
+    <label for="przedmiot2">Metody optymalizacji procesów</label></br>
+    
+    <input type="checkbox" id="przedmiot3" value="przedmiot3" v-model="przedmiot">
+    <label for="przedmiot3">Modelowanie i symulacja komputerowa</label></br>
+
+    <input type="checkbox" id="przedmiot4" value="przedmiot4" v-model="przedmiot">
+    <label for="przedmiot">Programowanie kreatywne</label></br>
+
+    <input type="checkbox" id="przedmiot5" value="przedmiot5" v-model="przedmiot">
+    <label for="przedmiot5">Marketing i handel elektronicznyBogate aplikacje internetowe</label></br>
+
+    <br>
+    <span>Ilość wybranych przedmiotów: {{ilosc}} </span>
+
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+       przedmiot: [] 
+
+      }, computed:{
+        
+        ilosc: function() {
+            var liczbaEl = this.przedmiot.length;
+            return liczbaEl;
+        }       
+     }
+    });
+  </script>
+
+</body>
+</html>

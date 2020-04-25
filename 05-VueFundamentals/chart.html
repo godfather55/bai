@@ -2,13 +2,22 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="Chart.js"></script>
+    <link rel="stylesheet" href="Chart.css">
 </head>
 <body>
+  <div id="app"> 
+  {{chart}}  
+  </div>
+  <h1>Chart</h1>
+  <canvas id="myChart" width="400" height="150"></canvas>
+
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
+        
           {
             language: 'Python',
             popularity: 25.95
@@ -29,8 +38,51 @@
             language: 'Php',
             popularity: 7.37
           }
-        ] 
-      }
+         
+      },
+      computed: {
+      chart: function (){
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: [this.films[0].language, this.films[1].language, this.films[2].language, this.films[3].language, this.films[4].language],
+              datasets: [{
+                  data: [this.films[0].popularity, this.films[1].popularity, this.films[2].popularity, this.films[3].popularity, this.films[4].popularity],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              },
+              legend: {
+                display: false
+
+              }
+          }
+      });
+            
+            }}
+
     });
   </script>
 </body>

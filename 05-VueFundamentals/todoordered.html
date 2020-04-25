@@ -4,15 +4,17 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-<h1>Todo List</h1>
-  <div id="app">
-    <div>DO WYKONANIA</div>
-    <ol>
-      <li v-for="item in todo">
-        {{ item }}
-      </li>
-    </ol>
-  </div>
+
+  <h1>Ordered Todo List</h1>
+    <div id="app">
+        <div>DO WYKONANIA</div>
+        <ol>
+          <li v-for="item in abbr">
+            {{ item }}
+          </li>
+        </ol>
+      </div>
+
 
 
   <script>
@@ -24,8 +26,16 @@
           'Feed cat',
           'Pay cable bill',
           'Go shopping' ]
-      }
+      },
+      computed: {
+        abbr: function () {
+        return this.todo.sort();
+        
+      }
+    }
     });
+
+
   </script>
 
 </body>

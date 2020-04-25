@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+</head>
+<style>
+table, td {
+  border: 1px solid black;
+}
+table { 
+    width: 90%;
+    border-collapse: collapse;
+  }
+td {
+     height: 5px;
+     padding: 5px;
+     text-align: left;
+  }
+</style>
+
+<body>
+
+    <h1>Coronavirus COVID19 - daily summary </h1>
+    <div id="app">
+        <api></api>
+    </div>
+    <script type="text/x-temlpate" id="showApi">
+    
+        <table>
+            <tr>
+              <td>Country</td>
+              <td>Country Code</td>
+              <td>New Confirmed</td>
+              <td>Total Confirmed</td>
+              <td>New Deaths</td>
+              <td>Total Deaths</td>
+              <td>New Recovered</td>
+              <td>Total Recovered</td>
+              <td>Date</td>
+            </tr>
+            <tr v-for="item in covid"> 
+              <td>{{item.Country}}</td>
+              <td>{{item.CountryCode}}</td>
+              <td>{{item.NewConfirmed}}</td>
+              <td>{{item.TotalConfirmed}}</td>
+              <td>{{item.NewDeaths}}</td>
+              <td>{{item.TotalDeaths}}</td>
+              <td>{{item.NewRecovered}}</td>
+              <td>{{item.TotalRecovered}}</td>
+              <td>{{item.Date}}</td>
+            </tr>
+        </table>    
+    </script>
+    <script src="api.js"></script>
+</body>
+</html>

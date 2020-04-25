@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Architektura von Neumanna</h1>
+    <list></list>
+   
+  </div>
+
+
+  <script type="text/x-template" id="architektura">
+    <ol>
+      <li v-for="item in składowe">{{item}}</li>
+    </ol>
+  </script>
+ 
+  <script src="architektura.js"></script>
+  
+</body>
+</html>

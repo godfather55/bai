@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>People</h1>
+        <input type="button" onclick="count()" value="Show person's data">
+        <ol id="personalData">
+        </ol>
+
+               
+		<script>
+
+            var countClicks = 0;
+               function count() {
+                                 
+       			    countClicks++; 
+                    console.log(countClicks);
+                   
+                    
+                var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+                
+				var myObj = JSON.parse(this.responseText);
+                var x = "";
+                
+                    x += myObj[countClicks-1].name + " " + myObj[countClicks-1].surname.toUpperCase()+ " , " + myObj[countClicks-1].country;
+                
+                var li = document.createElement("p");
+    
+                var addItem = document.createTextNode(x);
+                li.appendChild(addItem);
+                document.getElementById("personalData").appendChild(li);
+                
+              }              
+
+				};
+                              
+                xmlhttp.open("GET", "people.json", true);
+			    xmlhttp.send();
+
+            } ;
+            
+    	</script>
+	</body>
+</html>

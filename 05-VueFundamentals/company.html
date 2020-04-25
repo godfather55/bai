@@ -3,7 +3,31 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+<style>
+  div {
+    border-style: solid;
+    border-width: thin;
+    width: 300px;
+    text-align: center;
+  }
+
+
+</style>
 <body>
+
+  <h1>Company</h1>
+
+  <div id="app">
+    <br>
+    <b>{{company.toUpperCase()}}</b><br/>
+    {{address}}<br>
+    {{postcode + " "+ city }}<br/>
+    tel. {{landline + ", " +mobile}}<br/>
+    <a v-bind:href="web">{{web}}</a>
+    <br><br>
+  </div>
+
+  
   <script>
     var app = new Vue({
       el: '#app',

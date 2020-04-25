@@ -4,18 +4,57 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+<h1>Employee</h1>
+    <div id="app">
+      <b>EMPLOYEE RECORD</b>
+      <div v-if="name2 != null ">Name 1: {{name1}}<br/>
+      Name 2: {{name2}}</div><div v-else>Name 1: {{name1}}</div>
+      <div>Surname: {{surname}}</div>
+      <div v-if="nationality == 'Polish'">Pesel: {{pesel}}</div>
+      <div v-else>Nationality: {{nationality}}</div>
+      <div>Address: {{address}}</div>  
+    </div>
+
+    <p></p>
+
+    <div id="app1">
+      <b>EMPLOYEE RECORD</b>
+      <div v-if="name2 != null ">Name 1: {{name1}}<br/>
+      Name 2: {{name2}}</div><div v-else>Name 1: {{name1}}</div>
+      <div>Surname: {{surname}}</div>
+      <div v-if="nationality == 'Polish'">Pesel: {{pesel}}</div>
+      <div v-else>Nationality: {{nationality}}</div>
+      <div>Address: {{address}}</div>  
+    </div>
+
+
   <script>
     var app = new Vue({
       el: '#app',
-      data: {
-        name1: 'Adam',
-        name2: 'Jan',
-        surname: 'Majewski',
-        foreigner: false,
-        nationality: 'Polish',
-        pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
-    });
+    data: {
+       name1: 'Adam',
+       name2: 'Jan',
+       surname: 'Majewski',
+       foreigner: false,
+       nationality: 'Polish',
+       pesel: '92021708229',
+       address: 'ul. Szeroka 3, Kraków',
+   }
+    })
+
+    var app1 = new Vue({
+      el: '#app1',
+    data: {
+       name1: 'John',
+       name2: null,
+       surname: 'Brown',
+       foreigner: false,
+       nationality: 'USA',
+       pesel: '',
+       address: 'Holland Drive 4, Chicago',
+   }
+    })
+
   </script>
 
 </body>

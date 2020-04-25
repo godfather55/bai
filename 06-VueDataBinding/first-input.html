@@ -6,14 +6,27 @@
 <body>
   <div id="app">
     <span>Your name:</span>
-    <input type="text" v-model="name">  
+    <input type="text" v-model="name" >  
+    <p>Twoje imię to: {{name}}</p>
+
+    <p v-on:click="changeName">Click this text to change the name to Krystian.</p>
+    	
+
   </div>
+  
   <script>
+
+  
     var app = new Vue({
       el: '#app',
       data: {
         name: ''
-      }
+      }, 
+        methods: {
+          changeName: function($event){
+            this.name = "Krystian";
+          }
+        }
     });
   </script>
 

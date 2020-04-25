@@ -14,10 +14,25 @@
 				var method = 'GET';
 				var URL = 'http://api.nbp.pl/api/cenyzlota/last/30/?format=json';
 				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function(){display(this);};
+
+				xhr.onreadystatechange = function(){display(this);
+				};
+				
+				xhr.addEventListener("load", function() {
+    			if (xhr.readyState == 4 && xhr.status == 200  ) {
+					console.log("Wynik połączenia:");
+					console.log(xhr.response);
+					console.log("-----");
+				}
+
+			});
+
+
 				xhr.open(method, URL);
 				xhr.send();
 			}
+			
+						
 			function display(r){
 				console.log("Request state:", r.readyState);
 				console.log("Status:", r.status);

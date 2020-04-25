@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>Grades</h1>
+
+    <div id="app">  
+        <div>Student's grades: <span v-for="item in abbr"> {{ item }}</span></div>
+        <div>Average grades: {{average}}</div>
+
+      </div>
+
+
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        grades: [4, 5, 3, 2 , 3 , 5 , 5 , 2 ,4]
+      },
+      computed: {
+        abbr: function () {
+        return this.grades;
+       },
+        average: function (){
+            let values = this.grades;
+            let count = this.grades.length;
+            var suma = 0;
+            for (var i=0; i<count; i++){
+                suma = suma + this.grades[i];
+            }
+            console.log(suma);
+            averageGradues = suma / count;
+            var string = averageGradues.toString();
+            return string.substring(0,4);
+       
+       }
+        
+    }
+    });
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>Wprowadź tytuł książki :</br>
+        <input type="text" v-model="tytul" >  
+    </p>
+    
+    
+    <p>Wprowadź imię :</br> 
+    <input type="text" v-model="imie"> </br> oraz nazwisko autora </br> <input type="text" v-model="nazwisko">  </p>
+    
+    <p><button v-on:click="show">Zapisz</button></p>
+    	
+
+  </div>
+  
+  <script>
+
+  
+    var app = new Vue({
+      el: '#app',
+      data: {
+        tytul: '',
+        imie: '',
+        nazwisko: ''
+      }, 
+        methods: {
+          show: function($event){
+            var bookTitle = this.tytul;
+            var name = this.imie;
+            var surname = this.nazwisko;
+              console.log("Tytuł książki to: " + bookTitle);
+              console.log("Imię oraz nazwisko autora: " + name + " " +  surname);
+           
+          }
+        }
+    });
+  </script>
+
+</body>
+</html>

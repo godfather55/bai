@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Current exchange rates of EUR, USD and GBP</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Current exchange rates of EUR, USD and GBP</h1>
+        <input type="button" value="Wyświetl aktualny kurs" onclick="insert()">
+        <p id="tabela"></p>
+        <p id="eur"></p>
+        <p id="usd"></p>
+        <p id="gbp"></p>
+		
+		<script>
+	            function insert(){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						
+                        var tabela = JSON.parse(this.responseText);
+                        document.getElementById("tabela").innerHTML = "<h3> Dane z tabeli nr " + tabela[0].no + " z dnia " + tabela[0].tradingDate + "</h3>";
+
+                        //USD
+                        document.getElementById("usd").innerHTML = "<strong>" + tabela[0].rates[0].currency.toUpperCase() + "</strong> - "  + tabela[0].rates[0].code + "<p> Kupno: " + tabela[0].rates[0].bid + "</p>" + "<p> Sprzedaż: " + tabela[0].rates[0].ask + "</p>";
+
+                        //EUR
+                        document.getElementById("eur").innerHTML = "<strong>" + tabela[0].rates[3].currency.toUpperCase() + "</strong> - "  + tabela[0].rates[3].code + "<p> Kupno: " + tabela[0].rates[3].bid + "</p>" + "<p> Sprzedaż: " + tabela[0].rates[3].ask + "</p>";
+
+                        //GBP
+                        document.getElementById("gbp").innerHTML = "<strong>" + tabela[0].rates[6].currency.toUpperCase() + "</strong> - "  + tabela[0].rates[6].code + "<p> Kupno: " + tabela[0].rates[6].bid + "</p>" + "<p> Sprzedaż: " + tabela[0].rates[6].ask + "</p>";
+
+
+                        console.log(xmlhttp.response)
+
+
+					}
+                    };
+                
+             
+            xmlhttp.open("GET", "http://api.nbp.pl/api/exchangerates/tables/c/", true); 
+
+            xmlhttp.send();
+          
+
+		}
+						
+		
+		</script>
+
+	</body>
+</html>
